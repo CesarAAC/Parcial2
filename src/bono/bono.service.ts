@@ -33,7 +33,9 @@ export class BonoService {
     if (!bono)
       throw new BusinessLogicException("The bono with the given id was not found", BusinessError.NOT_FOUND);
     if(bono.calificacion>4){
-        
+        throw new BusinessLogicException(
+            `La calificacion del bono es muy alta como para eliminarla`,
+          );
     }
 
     await this.bonoRepository.remove(bono);

@@ -13,6 +13,7 @@ import { Resena } from './resena/resena.entity';
 import { Trueque } from './trueque/trueque.entity';
 import { Usuario } from './usuario/usuario.entity';
 import { BonoModule } from './bono/bono.module';
+import { ClaseBonoModule } from './clase-bono/clase-bono.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { BonoModule } from './bono/bono.module';
       keepConnectionAlive: true,
     }),
     BonoModule,
+    ClaseBonoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

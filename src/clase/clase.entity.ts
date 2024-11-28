@@ -10,11 +10,10 @@ export class ClaseEntity {
   @Column()
   nombre: string;
 
-  @Column('double')
-  calificaion: number;
-
   @Column('int')
   creditos: number;
+  @Column()
+  codigo: string;
 
   @ManyToOne(() => UsuarioEntity, (usuario) => usuario.clases)
   usuario: UsuarioEntity;
