@@ -1,8 +1,12 @@
-
+/* eslint-disable prettier/prettier */
 import { BonoEntity } from 'src/bono/bono.entity/bono.entity';
-import { ClaseEntity } from 'src/clase/clase.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, ManyToOne } from 'typeorm';
+import { ClaseEntity } from 'src/clase/clase.entity/clase.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
 
+export enum Rol {
+  PROFESOR = 'Profesor',
+  DECANA = 'Decana',
+}
 
 @Entity()
 export class UsuarioEntity {
@@ -21,8 +25,8 @@ export class UsuarioEntity {
   @Column('int')
   extencion: number;
 
-  @Column()
-  rol: string;
+  @Column({ type: 'enum', enum: Rol })
+  rol: Rol;
 
   @Column('int')
   puntos: number;
@@ -35,7 +39,5 @@ export class UsuarioEntity {
 
   @ManyToOne(() => UsuarioEntity, { nullable: true })
   jefe: UsuarioEntity;
-
-
 
 }

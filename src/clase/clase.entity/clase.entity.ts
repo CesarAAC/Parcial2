@@ -1,6 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { BonoEntity } from 'src/bono/bono.entity/bono.entity';
-import { UsuarioEntity } from 'src/usuario/usuario.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
+import { UsuarioEntity } from 'src/usuario/usuario.entity/usuario.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity()
 export class ClaseEntity {
@@ -12,10 +13,12 @@ export class ClaseEntity {
 
   @Column('int')
   creditos: number;
+  
   @Column()
   codigo: string;
 
   @ManyToOne(() => UsuarioEntity, (usuario) => usuario.clases)
+  @JoinColumn()
   usuario: UsuarioEntity;
 
   @OneToMany(() => BonoEntity, (bono) => bono.clase)
