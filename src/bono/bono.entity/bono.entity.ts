@@ -1,27 +1,24 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Double, Long} from 'typeorm/driver/mongodb/bson.typings';
 import { UsuarioEntity } from 'src/usuario/usuario.entity';
 import { ClaseEntity } from 'src/clase/clase.entity';
-{}
 
 @Entity()
 export class BonoEntity {
- @PrimaryGeneratedColumn('uuid')
- id: Long;
+  @PrimaryGeneratedColumn()
+  id: number;
 
- @Column()
- monto: number;
- 
- @Column('double')
- calificacion: number;
- 
- @Column()
- palabraClave: string;
+  @Column()
+  monto: number;
 
- @ManyToOne(() => UsuarioEntity, (usuario) => usuario.bonos)
- usuario: UsuarioEntity;
+  @Column('float')
+  calificacion: number;
 
- @ManyToOne(() => ClaseEntity, (clase) => clase.bonos)
- clase: ClaseEntity;
- 
+  @Column()
+  palabraClave: string;
+
+  @ManyToOne(() => UsuarioEntity, (usuario) => usuario.bonos)
+  usuario: UsuarioEntity;
+
+  @ManyToOne(() => ClaseEntity, (clase) => clase.bonos)
+  clase: ClaseEntity;
 }
